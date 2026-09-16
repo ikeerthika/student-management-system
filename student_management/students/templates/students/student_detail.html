@@ -1,0 +1,54 @@
+{% extends 'students/base.html' %}
+
+{% block title %}{{ student.name }} - Details{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 650px; margin: 0 auto;">
+    <div class="card-header">
+        <h1 class="card-title">Student Details</h1>
+        <a href="{% url 'student_list' %}" class="btn btn-secondary btn-sm">&larr; Back to List</a>
+    </div>
+
+    <ul class="detail-list">
+        <li class="detail-item">
+            <span class="detail-label">Student ID:</span>
+            <span class="detail-value">#{{ student.id }}</span>
+        </li>
+        <li class="detail-item">
+            <span class="detail-label">Full Name:</span>
+            <span class="detail-value"><strong>{{ student.name }}</strong></span>
+        </li>
+        <li class="detail-item">
+            <span class="detail-label">Email:</span>
+            <span class="detail-value">{{ student.email }}</span>
+        </li>
+        <li class="detail-item">
+            <span class="detail-label">Phone:</span>
+            <span class="detail-value">{{ student.phone }}</span>
+        </li>
+        <li class="detail-item">
+            <span class="detail-label">Course:</span>
+            <span class="detail-value">{{ student.course }}</span>
+        </li>
+        <li class="detail-item">
+            <span class="detail-label">Joining Date:</span>
+            <span class="detail-value">{{ student.joining_date }}</span>
+        </li>
+        <li class="detail-item">
+            <span class="detail-label">Fees Status:</span>
+            <span class="detail-value">
+                {% if student.fees_status == 'Paid' %}
+                    <span class="badge badge-paid">Paid</span>
+                {% else %}
+                    <span class="badge badge-pending">Pending</span>
+                {% endif %}
+            </span>
+        </li>
+    </ul>
+
+    <div class="form-actions">
+        <a href="{% url 'edit_student' student.pk %}" class="btn btn-warning">Edit Information</a>
+        <a href="{% url 'delete_student' student.pk %}" class="btn btn-danger">Delete Student</a>
+    </div>
+</div>
+{% endblock %}

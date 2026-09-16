@@ -1,0 +1,77 @@
+{% extends 'students/base.html' %}
+
+{% block title %}{{ title }} - Student Management System{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 650px; margin: 0 auto;">
+    <div class="card-header">
+        <h1 class="card-title">{{ title }}</h1>
+        <a href="{% url 'student_list' %}" class="btn btn-secondary btn-sm">&larr; Back to List</a>
+    </div>
+
+    <form method="POST" novalidate>
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+        <div class="confirm-box" style="margin-bottom: 1rem;">
+            {% for error in form.non_field_errors %}
+            <p class="confirm-text">{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">Full Name</label>
+            {{ form.name }}
+            {% if form.name.errors %}
+                <p style="color: #ef4444; font-size: 0.85rem; margin-top: 0.25rem;">{{ form.name.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email Address</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <p style="color: #ef4444; font-size: 0.85rem; margin-top: 0.25rem;">{{ form.email.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.phone.id_for_label }}">Phone Number</label>
+            {{ form.phone }}
+            {% if form.phone.errors %}
+                <p style="color: #ef4444; font-size: 0.85rem; margin-top: 0.25rem;">{{ form.phone.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.course.id_for_label }}">Enrolled Course</label>
+            {{ form.course }}
+            {% if form.course.errors %}
+                <p style="color: #ef4444; font-size: 0.85rem; margin-top: 0.25rem;">{{ form.course.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.joining_date.id_for_label }}">Joining Date</label>
+            {{ form.joining_date }}
+            {% if form.joining_date.errors %}
+                <p style="color: #ef4444; font-size: 0.85rem; margin-top: 0.25rem;">{{ form.joining_date.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.fees_status.id_for_label }}">Fees Status</label>
+            {{ form.fees_status }}
+            {% if form.fees_status.errors %}
+                <p style="color: #ef4444; font-size: 0.85rem; margin-top: 0.25rem;">{{ form.fees_status.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Student</button>
+            <a href="{% url 'student_list' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

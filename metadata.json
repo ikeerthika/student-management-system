@@ -1,0 +1,6 @@
+{
+  "name": "Student Management System",
+  "description": "A simple beginner-friendly Django web application to manage students with SQLite, Django Templates, and CRUD operations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

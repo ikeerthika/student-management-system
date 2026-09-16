@@ -1,0 +1,26 @@
+{% extends 'students/base.html' %}
+
+{% block title %}Delete Student - Student Management System{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 550px; margin: 0 auto;">
+    <div class="card-header">
+        <h1 class="card-title">Confirm Deletion</h1>
+    </div>
+
+    <div class="confirm-box">
+        <p class="confirm-text">⚠️ <strong>Warning:</strong> Are you sure you want to permanently delete this student record?</p>
+        <p><strong>Name:</strong> {{ student.name }}</p>
+        <p><strong>Course:</strong> {{ student.course }}</p>
+        <p><strong>Email:</strong> {{ student.email }}</p>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-danger">Yes, Delete Record</button>
+            <a href="{% url 'student_list' %}" class="btn btn-secondary">No, Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

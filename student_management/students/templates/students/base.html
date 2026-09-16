@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Student Management System{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'students/style.css' %}">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'home' %}">🎓 Student Management</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'student_list' %}">All Students</a></li>
+            <li><a href="{% url 'add_student' %}">+ Add Student</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="container">
+        {% block content %}
+        <!-- Page-specific content goes here -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Student Management System - Built with Python & Django</p>
+    </footer>
+
+</body>
+</html>
